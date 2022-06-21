@@ -1,0 +1,45 @@
+package interfaces para crear una interfaz
+	me pongo encima del nombre de la interfaz (en el código) y hago ALT+ENTER
+	selecciono implement interface
+	cambio el package de destino de interfaces a impl
+
+Cuando he creado la implementación de la interface tengo que poner encima @RestController
+
+Encima del método pongo:
+	@GetMapping("/hello") -> "/hello" es la url
+Levanto el proyecto con spring-boot
+En postman pongo http://localhost:8080/hello para ver la respuesta
+
+@ResponseStatus(HttpStatus.OK) para especificar el tipo de status que queremos que devuelva
+
+Se puede llamar a la misma URL con distintos verbos HTTP
+
+Query Params = request params : parámetros opcionales
+Path variables: parámetros obligatorios
+
+=== VERBOS HTTP ===
+GET: Buscar información. Nunca se le pasa un body
+POST: Crear un registro nuevo en base de datos. Necesita un body con la info del registro
+PUT: Actualizar registros existentes (actualización completa)
+PATCH: Actualización parciales (p.e. actualizar contraseña)
+DELETE: Eliminar un registro
+
+=== Convenciones de nombres ===
+Recurso: course
+http://localhost:8080
+
+GET
+	ALL -> http://localhost:8080/courses
+	ID -> http://localhost:8080/courses/{id}
+POST
+	STORE -> http://localhost:8080/courses
+		-> body: {courseInfo}
+PUT
+	UPDATE -> http://localhost:8080/courses/{id}
+		 -> body: {courseInfo}
+PATCH
+	PARTIAL UPDATE nomenclatura más libre
+		-> http://localhost:8080/courses/{id}/password
+		-> body: {newPassword}
+DELETE
+	DELETE -> http://localhost:8080/courses/{id}
